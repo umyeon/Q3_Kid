@@ -4,29 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>바다가 들려주는 이야기 - 우면도서관 북큐레이션</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 구글 폰트: 동글(Dongle) 및 프리텐다드(Pretendard) 웹폰트 로드 -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-        /* 4. 상단 타이틀/소개 영역의 민트색을 낮추고 하늘색 농도와 범위를 대폭 강화 */
+        /* 3. 민트색 농도 강화 및 2섹션(아파하는) 시작점에 맞춰 핑크색 위치 전면 수정 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: 
-                /* 타이틀 & 소개 영역: 민트 농도 약화 / 하늘색 농도 및 범위 크게 확대 */
-                radial-gradient(circle at 25% 6%, rgba(167, 243, 208, 0.35), transparent 40%), 
-                radial-gradient(circle at 55% 8%, rgba(125, 211, 252, 0.98), transparent 65%), 
+                /* 타이틀 & 소개 영역: 민트색 농도 선명하게 강화 */
+                radial-gradient(circle at 25% 5%, rgba(167, 243, 208, 0.7), transparent 50%), 
+                radial-gradient(circle at 60% 7%, rgba(125, 211, 252, 0.98), transparent 65%), 
                 
-                /* 소개 영역 절반 이후: 초록색 강조 (약 26% 지점) */
-                radial-gradient(circle at 75% 26%, rgba(190, 242, 100, 0.9), transparent 50%), 
+                /* 1. 반짝이는 영역 (초록색 범위가 아래로 너무 침범하지 않도록 축소) */
+                radial-gradient(circle at 80% 26%, rgba(190, 242, 100, 0.85), transparent 45%), 
                 
-                /* 1. 반짝이는 영역 절반 이후: 분홍색 강조 (약 52% 지점) */
-                radial-gradient(circle at 18% 52%, rgba(254, 205, 211, 0.95), transparent 50%), 
+                /* 2. 아파하는 영역: 시작 지점부터 핑크색이 바로 보이도록 Y축 높이를 위로 조절 */
+                radial-gradient(circle at 15% 45%, rgba(254, 205, 211, 0.95), transparent 50%), 
                 
-                /* 3. 함께하는 영역 쪽: 파란색 강조 (약 85% 지점) */
-                radial-gradient(circle at 70% 85%, rgba(147, 197, 253, 0.9), transparent 55%), 
+                /* 3. 함께하는 영역 쪽: 파란색 강조 */
+                radial-gradient(circle at 75% 82%, rgba(147, 197, 253, 0.9), transparent 55%), 
                 
                 /* 자연스러운 뭉개짐을 위한 하얀색 베이스 레이어 */
                 radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95), transparent 45%),
@@ -52,7 +50,7 @@
             font-family: 'Dongle', sans-serif;
         }
 
-        /* 2. 메인 타이틀 흰색 번짐 효과 (환하게 빛나는 네온 글로우 스타일로 강화) */
+        /* 메인 타이틀 흰색 번짐 효과 */
         .text-shadow-glow {
             text-shadow: 
                 0 0 12px rgba(255, 255, 255, 0.8), 
@@ -64,25 +62,20 @@
 </head>
 <body class="text-slate-800 min-h-screen antialiased">
 
-    <!-- 상단 헤더 영역 -->
     <header class="max-w-6xl mx-auto pt-16 pb-12 px-6 text-center">
-        <!-- 아이브로우 -->
-        <p class="text-xs font-bold tracking-widest text-blue-700/70 uppercase mb-4">
+        <p class="text-xs font-bold tracking-widest text-blue-700/70 uppercase mb-12">
             우면도서관 ｜ 어린이자료실
         </p>
         
-        <!-- 1, 2. 메인 타이틀: 레이아웃 구조 균일화를 통한 행간 일치 및 소라 배치 레이어 조정 -->
-        <div class="inline-block text-left font-dongle text-[5.2rem] xs:text-[6rem] sm:text-8xl md:text-9xl lg:text-[9.5rem] text-white text-shadow-glow mb-10 tracking-wide select-none leading-[0.8]">
-            <div class="relative whitespace-nowrap">
-                <!-- 소라 이모티콘을 '바' 글자 뒤(z-0)에 배치하고 본문 글자는 z-10으로 올려 묻힘 방지 -->
+        <div class="inline-block text-left font-dongle text-[5.2rem] xs:text-[6rem] sm:text-8xl md:text-9xl lg:text-[9.5rem] text-white text-shadow-glow mb-10 tracking-wide select-none">
+            <div class="leading-[0.9] relative whitespace-nowrap">
                 <span class="absolute -top-[0.1em] -left-[0.18em] text-[1.15em] opacity-65 z-0">🐚</span>
                 <span class="relative z-10">바다가</span>
             </div>
-            <div class="pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
-            <div class="pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
+            <div class="leading-[0.9] pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
+            <div class="leading-[0.9] pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
         </div>
         
-        <!-- 소개글 영역 -->
         <div class="max-w-2xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white/40 text-base md:text-lg text-slate-800/90 font-medium text-center">
             <p class="font-dongle text-3xl md:text-4xl text-blue-900/80 border-b border-white/50 pb-4 mb-6 tracking-wide">
                 바다는 우리에게 어떤 이야기를 들려줄까요?
@@ -108,10 +101,8 @@
         </div>
     </header>
 
-    <!-- 메인 콘텐츠 (북큐레이션 리스트) -->
     <main class="max-w-6xl mx-auto px-6 pb-24 space-y-16">
 
-        <!-- 섹션 1: 반짝이는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
                 <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
@@ -121,7 +112,6 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 도서 카드 1 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417966233/417966212/9788967499259" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -133,7 +123,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 2 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394269/417394267/9788966350278" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -145,7 +134,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 3 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976007/417975982/9791187936565" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -157,7 +145,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 4 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417664662/417664644/9791186825181" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -172,7 +159,6 @@
             </div>
         </section>
 
-        <!-- 섹션 2: 아파하는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
                 <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
@@ -182,7 +168,6 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 도서 카드 1 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417605444/417605427/9788965914419" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -194,7 +179,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 2 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394260/417394258/9791197303449" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -206,7 +190,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 3 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417975414/417975394/9791191667110" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -218,7 +201,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 4 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976219/417976192/9788949102627" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -233,18 +215,15 @@
             </div>
         </section>
 
-        <!-- 섹션 3: 함께하는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
                 <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
-                    <!-- 3. 요청하신 대로 폰트 색상을 파랑색(text-blue-500)으로 전면 교체 -->
                     <span class="text-blue-500 shrink-0">🤝 3. 함께하는</span> 
                     <span class="text-3xl md:text-4xl text-white font-light">- 푸른 바다를 되살리는 우리의 이야기</span>
                 </h2>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 도서 카드 1 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976477/417976456/9791164633746" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -256,7 +235,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 2 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417601988/417601977/9791196790332" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -268,7 +246,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 3 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976516/417976484/9791170287759" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -280,7 +257,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 도서 카드 4 -->
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
                         <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417393092/417393090/9788901086088" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
@@ -297,7 +273,6 @@
 
     </main>
 
-    <!-- 푸터 -->
     <footer class="bg-slate-900/40 backdrop-blur-md text-slate-700 py-8 px-6 text-center text-xs border-t border-white/20">
         <p class="font-semibold mb-1">우면도서관 어린이자료실 북큐레이션</p>
         <p>© 2026 우면도서관. All rights reserved.</p>
