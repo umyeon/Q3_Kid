@@ -9,26 +9,27 @@
         @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-        /* 3. 민트색 농도 강화 및 2섹션(아파하는) 시작점에 맞춰 핑크색 위치 전면 수정 */
+        /* 배경: 전체 채도를 대폭 낮춘 은은한 파스텔톤 변경 및 핑크색 영역 범위 전면 재배치 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: 
-                /* 타이틀 & 소개 영역: 민트색 농도 선명하게 강화 */
-                radial-gradient(circle at 25% 5%, rgba(167, 243, 208, 0.7), transparent 50%), 
-                radial-gradient(circle at 60% 7%, rgba(125, 211, 252, 0.98), transparent 65%), 
+                /* 상단 타이틀 & 소개 영역: 하늘색 농도를 높이되 은은한 민트색이 부드럽게 믹스되도록 수정 */
+                radial-gradient(circle at 25% 5%, rgba(167, 243, 208, 0.5), transparent 45%), 
+                radial-gradient(circle at 60% 7%, rgba(186, 230, 253, 0.8), transparent 60%), 
                 
-                /* 1. 반짝이는 영역 (초록색 범위가 아래로 너무 침범하지 않도록 축소) */
-                radial-gradient(circle at 80% 26%, rgba(190, 242, 100, 0.85), transparent 45%), 
+                /* 1. 반짝이는 영역 절반 이후: 초록 색상 배치 (Y축 약 23%) */
+                radial-gradient(circle at 75% 23%, rgba(217, 249, 157, 0.4), transparent 45%), 
                 
-                /* 2. 아파하는 영역: 시작 지점부터 핑크색이 바로 보이도록 Y축 높이를 위로 조절 */
-                radial-gradient(circle at 15% 45%, rgba(254, 205, 211, 0.95), transparent 50%), 
+                /* 2. 아파하는 영역 전체: 반짝이는 영역 절반(Y축 42%)부터 함께하는 전(Y축 68%)까지 핑크색이 넓고 확실하게 보이도록 전면 수정 */
+                radial-gradient(circle at 25% 45%, rgba(254, 205, 211, 0.7), transparent 50%), 
+                radial-gradient(circle at 70% 58%, rgba(254, 205, 211, 0.65), transparent 55%), 
                 
-                /* 3. 함께하는 영역 쪽: 파란색 강조 */
-                radial-gradient(circle at 75% 82%, rgba(147, 197, 253, 0.9), transparent 55%), 
+                /* 3. 함께하는 영역 쪽: 파란색이 더 잘 보이도록 파스텔톤 배치 (Y축 약 82%) */
+                radial-gradient(circle at 50% 82%, rgba(191, 219, 254, 0.7), transparent 50%), 
                 
-                /* 자연스러운 뭉개짐을 위한 하얀색 베이스 레이어 */
-                radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95), transparent 45%),
-                linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+                /* 부드럽게 뭉개지는 효과를 위한 하얀색 베이스 및 연한 파스텔 바탕 */
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), transparent 50%),
+                linear-gradient(135deg, #f0f9ff 0%, #f4fbf7 100%);
             background-size: 100% 100%;
             word-break: keep-all;
             position: relative;
@@ -67,13 +68,13 @@
             우면도서관 ｜ 어린이자료실
         </p>
         
-        <div class="inline-block text-left font-dongle text-[5.2rem] xs:text-[6rem] sm:text-8xl md:text-9xl lg:text-[9.5rem] text-white text-shadow-glow mb-10 tracking-wide select-none">
-            <div class="leading-[0.9] relative whitespace-nowrap">
+        <div class="inline-block text-left font-dongle text-[5.2rem] xs:text-[6rem] sm:text-8xl md:text-9xl lg:text-[9.5rem] text-white text-shadow-glow mb-10 tracking-wide select-none leading-[1.15]">
+            <div class="relative whitespace-nowrap">
                 <span class="absolute -top-[0.1em] -left-[0.18em] text-[1.15em] opacity-65 z-0">🐚</span>
                 <span class="relative z-10">바다가</span>
             </div>
-            <div class="leading-[0.9] pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
-            <div class="leading-[0.9] pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
+            <div class="pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
+            <div class="pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
         </div>
         
         <div class="max-w-2xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white/40 text-base md:text-lg text-slate-800/90 font-medium text-center">
