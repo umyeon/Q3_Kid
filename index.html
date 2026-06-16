@@ -4,221 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>바다가 들려주는 이야기 - 우면도서관 북큐레이션</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 구글 폰트: 동글(Dongle) 및 프리텐다드(Pretendard) 웹폰트 로드 -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-        /* 전반적인 배경 처리: 업로드하신 이미지의 파스텔 톤 홀로그램/오로라 그라데이션 구현 */
+        /* [어린이] 제목_메인_2.png 이미지의 파스텔 톤 뭉개지는 오로라 색감 완벽 구현 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: 
-                radial-gradient(circle at 10% 15%, rgba(255, 192, 203, 0.65), transparent 40%),
-                radial-gradient(circle at 75% 20%, rgba(56, 189, 248, 0.75), transparent 50%),
-                radial-gradient(circle at 20% 75%, rgba(187, 247, 208, 0.7), transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(147, 197, 253, 0.7), transparent 45%),
-                radial-gradient(circle at 95% 50%, rgba(254, 240, 138, 0.5), transparent 35%),
-                linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+                radial-gradient(circle at 10% 20%, rgba(254, 205, 211, 0.85), transparent 45%), /* 분홍색 */
+                radial-gradient(circle at 55% 25%, rgba(125, 211, 252, 0.95), transparent 60%), /* 하늘색 */
+                radial-gradient(circle at 15% 75%, rgba(190, 242, 100, 0.85), transparent 50%), /* 연두색 */
+                radial-gradient(circle at 90% 40%, rgba(147, 197, 253, 0.75), transparent 50%), /* 연한 파랑 */
+                radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.95), transparent 45%), /* 하얀색 뭉개짐 */
+                linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
             background-attachment: fixed;
             background-size: cover;
             word-break: keep-all;
+            position: relative;
         }
 
-        /* 메인 타이틀 및 섹션용 동글B 폰트 커스텀 */
+        /* 필름 카메라 감성의 자글자글한 노이즈 입자 효과 오버레이 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.16; /* 이미지와 흡사한 노이즈 강도 설정 */
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* 동글 폰트 지정 및 줄바꿈 보정 */
         .font-dongle {
             font-family: 'Dongle', sans-serif;
-            font-weight: 700;
-            line-height: 0.9;
+            line-height: 0.85;
+        }
+
+        /* 흰색 타이틀의 시인성을 확보하기 위한 미세한 부드러운 그림자 */
+        .text-shadow-soft {
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-<body class="text-slate-800 min-h-screen antialiased selection:bg-blue-200">
+<body class="text-slate-800 min-h-screen antialiased">
 
+    <!-- 상단 헤더 영역 -->
     <header class="max-w-6xl mx-auto pt-16 pb-12 px-6 text-center">
-        <p class="text-sm font-semibold tracking-wider text-blue-600/80 uppercase mb-3">
+        <!-- 아이브로우 (밝고 화사한 매칭) -->
+        <p class="text-xs font-bold tracking-widest text-blue-700/70 uppercase mb-2">
             우면도서관 ｜ 어린이자료실
         </p>
-        <h1 class="font-dongle text-6xl md:text-7xl text-slate-900 drop-shadow-sm mb-8 tracking-wide">
-            바다가 들려주는 이야기
+        <!-- 메인 타이틀: 이미지와 동일한 순백색('흰색') 동글체 적용 -->
+        <h1 class="font-dongle text-7xl md:text-8xl text-white text-shadow-soft mb-8 tracking-wide">
+            바자가 들려주는 이야기
         </h1>
         
-        <div class="max-w-2xl mx-auto bg-white/40 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white/40 text-base md:text-lg leading-relaxed text-slate-700">
+        <!-- 소개글 영역: 흰색 배경 투명도를 조절해 배경을 살리면서 텍스트 가독성 확보 (임의 강조 전면 삭제) -->
+        <div class="max-w-2xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-white/40 text-base md:text-lg leading-relaxed text-slate-800/90 font-medium">
             <p class="mb-3">바다는 우리에게 어떤 이야기를 들려줄까요?</p>
-            <p class="mb-3">한 마리의 생물에서, 하나의 플라스틱 조각에서, 지구의 변화까지.</p>
-            <p class="mb-5 font-bold text-blue-700">바다는 많은 것을 이야기합니다.</p>
-            <p class="mb-3">아름다운 바다와 그 안의 생명들, 바다가 보내는 경고들,</p>
-            <p class="mb-5">푸른 지구를 지키기 위한 우리의 생각과 실천.</p>
-            <p class="font-bold text-slate-900 border-t border-blue-200/50 pt-4 font-dongle text-3xl text-center">
-                "책을 따라 바자가 들려주는 이야기를 읽어 봅니다."
+            <p class="mb-3">한 마리의 생물에서,</p>
+            <p class="mb-3">하나의 플라스틱 조각에서,</p>
+            <p class="mb-5">지구의 변화까지.</p>
+            <p class="mb-5">바다는 많은 것을 이야기합니다.</p>
+            <p class="mb-3">아름다운 바다와 그 안의 생명들,</p>
+            <p class="mb-3">바다가 보내는 경고들,</p>
+            <p class="mb-6">푸른 지구를 지키기 위한 우리의 생각과 실천.</p>
+            <p class="font-dongle text-3xl md:text-4xl text-blue-900/80 border-t border-white/50 pt-4 mt-2">
+                책을 따라 바다가 들려주는 이야기를 읽어 봅니다.
             </p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pb-24 space-y-20">
+    <!-- 메인 콘텐츠 (북큐레이션 리스트) -->
+    <main class="max-w-6xl mx-auto px-6 pb-24 space-y-16">
 
+        <!-- 1. 반짝이는 섹션 -->
         <section>
-            <div class="mb-8">
-                <h2 class="font-dongle text-4xl md:text-5xl text-emerald-700 flex items-baseline gap-2">
-                    ✨ 1. 반짝이는
-                    <span class="text-base md:text-lg font-sans text-slate-500 font-medium">- 우리가 사랑한 바다의 이야기</span>
+            <!-- 제목+부연설명 전체 동글체 적용 및 모바일에서도 절대 줄바꿈 없음 설정 -->
+            <div class="mb-6 overflow-x-auto scrollbar-hide">
+                <h2 class="font-dongle text-4xl md:text-5xl text-white text-shadow-soft whitespace-nowrap inline-flex items-center gap-2">
+                    ✨ 1. 반짝이는 <span class="text-3xl md:text-4xl text-white/90 font-light">- 우리가 사랑한 바다의 이야기</span>
                 </h2>
-                <div class="h-1 w-20 bg-emerald-400 rounded-full mt-1"></div>
+                <div class="h-[3px] w-24 bg-white/70 rounded-full mt-1"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 1 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417966233/417966212/9788967499259" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788967499259.jpg" alt="바다 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417966233/417966212/9788967499259" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788967499259.jpg" alt="바다" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">바다</h3>
                         <p class="text-xs text-slate-500 mb-2">퍼트리샤 헤가티 글 · 브리타 테 큰트럽 그림</p>
                     </div>
-                    <span class="text-xs text-center text-emerald-600 font-medium bg-emerald-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 2 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394269/417394267/9788966350278" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788966350278.jpg" alt="바다 100층짜리 집 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394269/417394267/9788966350278" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788966350278.jpg" alt="바다 100층짜리 집" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">바다 100층짜리 집</h3>
                         <p class="text-xs text-slate-500 mb-2">이와이 도시오</p>
                     </div>
-                    <span class="text-xs text-center text-emerald-600 font-medium bg-emerald-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 3 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976007/417975982/9791187936565" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791187936565.jpg" alt="바닷가 작은 집 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976007/417975982/9791187936565" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791187936565.jpg" alt="바닷가 작은 집" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">바닷가 작은 집</h3>
                         <p class="text-xs text-slate-500 mb-2">케빈 헹크스 글 · 로라 드론제크 그림</p>
                     </div>
-                    <span class="text-xs text-center text-emerald-600 font-medium bg-emerald-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 4 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417664662/417664644/9791186825181" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791186825181.jpg" alt="여름 안에서 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417664662/417664644/9791186825181" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791186825181.jpg" alt="여름 안에서" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">여름 안에서</h3>
                         <p class="text-xs text-slate-500 mb-2">솔 운두라가</p>
                     </div>
-                    <span class="text-xs text-center text-emerald-600 font-medium bg-emerald-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
             </div>
         </section>
 
+        <!-- 2. 아파하는 섹션 -->
         <section>
-            <div class="mb-8">
-                <h2 class="font-dongle text-4xl md:text-5xl text-rose-700 flex items-baseline gap-2">
-                    😢 2. 아파하는
-                    <span class="text-base md:text-lg font-sans text-slate-500 font-medium">- 숨결을 잃어가는 바다의 이야기</span>
+            <div class="mb-6 overflow-x-auto scrollbar-hide">
+                <h2 class="font-dongle text-4xl md:text-5xl text-white text-shadow-soft whitespace-nowrap inline-flex items-center gap-2">
+                    😢 2. 아파하는 <span class="text-3xl md:text-4xl text-white/90 font-light">- 숨결을 잃어가는 바다의 이야기</span>
                 </h2>
-                <div class="h-1 w-20 bg-rose-400 rounded-full mt-1"></div>
+                <div class="h-[3px] w-24 bg-white/70 rounded-full mt-1"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 1 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417605444/417605427/9788965914419" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965914419.jpg" alt="고래 엄마에게 소화제가 필요해! 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417605444/417605427/9788965914419" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965914419.jpg" alt="고래 엄마에게 소화제가 필요해!" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">고래 엄마에게 소화제가 필요해!</h3>
                         <p class="text-xs text-slate-500 mb-2">이기규 글 · 김이조 그림</p>
                     </div>
-                    <span class="text-xs text-center text-rose-600 font-medium bg-rose-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 2 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394260/417394258/9791197303449" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791197303449.jpg" alt="미세미세한 맛 플라수프 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417394260/417394258/9791197303449" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791197303449.jpg" alt="미세미세한 맛 플라수프" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">미세미세한 맛 플라수프</h3>
                         <p class="text-xs text-slate-500 mb-2">김지형, 조은수</p>
                     </div>
-                    <span class="text-xs text-center text-rose-600 font-medium bg-rose-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 3 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417975414/417975394/9791191667110" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191667110.jpg" alt="우리 곧 사라져요 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417975414/417975394/9791191667110" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191667110.jpg" alt="우리 곧 사라져요" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">우리 곧 사라져요</h3>
                         <p class="text-xs text-slate-500 mb-2">이예숙</p>
                     </div>
-                    <span class="text-xs text-center text-rose-600 font-medium bg-rose-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 4 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976219/417976192/9788949102627" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788949102627.jpg" alt="자, 맡겨 주세요! 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976219/417976192/9788949102627" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788949102627.jpg" alt="자, 맡겨 주세요!" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">자, 맡겨 주세요!</h3>
                         <p class="text-xs text-slate-500 mb-2">이소영</p>
                     </div>
-                    <span class="text-xs text-center text-rose-600 font-medium bg-rose-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
             </div>
         </section>
 
+        <!-- 3. 함께하는 섹션 -->
         <section>
-            <div class="mb-8">
-                <h2 class="font-dongle text-4xl md:text-5xl text-sky-700 flex items-baseline gap-2">
-                    🤝 3. 함께하는
-                    <span class="text-base md:text-lg font-sans text-slate-500 font-medium">- 푸른 바다를 되살리는 우리의 이야기</span>
+            <div class="mb-6 overflow-x-auto scrollbar-hide">
+                <h2 class="font-dongle text-4xl md:text-5xl text-white text-shadow-soft whitespace-nowrap inline-flex items-center gap-2">
+                    🤝 3. 함께하는 <span class="text-3xl md:text-4xl text-white/90 font-light">- 푸른 바다를 되살리는 우리의 이야기</span>
                 </h2>
-                <div class="h-1 w-20 bg-sky-400 rounded-full mt-1"></div>
+                <div class="h-[3px] w-24 bg-white/70 rounded-full mt-1"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 1 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976477/417976456/9791164633746" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791164633746.jpg" alt="지구를 위한 작은 물결 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976477/417976456/9791164633746" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791164633746.jpg" alt="지구를 위한 작은 물결" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">지구를 위한 작은 물결</h3>
                         <p class="text-xs text-slate-500 mb-2">니컬라 에드워즈 글 · 사라 윌킨스 그림</p>
                     </div>
-                    <span class="text-xs text-center text-sky-600 font-medium bg-sky-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 2 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417601988/417601977/9791196790332" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791196790332.jpg" alt="그레타 툰베리가 외쳐요! 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417601988/417601977/9791196790332" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791196790332.jpg" alt="그레타 툰베리가 외쳐요!" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">그레타 툰베리가 외쳐요!</h3>
                         <p class="text-xs text-slate-500 mb-2">자넷 윈터</p>
                     </div>
-                    <span class="text-xs text-center text-sky-600 font-medium bg-sky-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 3 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976516/417976484/9791170287759" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791170287759.jpg" alt="엄마 과학자의 남극 편지 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417976516/417976484/9791170287759" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791170287759.jpg" alt="엄마 과학자의 남극 편지" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">엄마 과학자의 남극 편지</h3>
                         <p class="text-xs text-slate-500 mb-2">안나 카브레 글 · 마리오나 톨로사 그림</p>
                     </div>
-                    <span class="text-xs text-center text-sky-600 font-medium bg-sky-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
-                <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-sm p-4 border border-white/50 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <!-- 도서 카드 4 -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/41393092/417393090/9788901086088" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/80 p-4 mb-4 group">
-                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901086088.jpg" alt="고사리손 환경책 표지" class="h-56 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417393092/417393090/9788901086088" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                            <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901086088.jpg" alt="고사리손 환경책" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <h3 class="font-bold text-base text-slate-900 mb-1 line-clamp-1">고사리손 환경책</h3>
                         <p class="text-xs text-slate-500 mb-2">멜라니 월시</p>
                     </div>
-                    <span class="text-xs text-center text-sky-600 font-medium bg-sky-50/50 py-1 rounded-lg">표지 클릭 시 도서 정보 이동</span>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-10 px-6 text-center text-xs border-t border-slate-800">
-        <p class="font-medium text-slate-300 mb-1">우면도서관 어린이자료실 북큐레이션</p>
+    <!-- 푸터 -->
+    <footer class="bg-slate-900/40 backdrop-blur-md text-slate-700 py-8 px-6 text-center text-xs border-t border-white/20">
+        <p class="font-semibold mb-1">우면도서관 어린이자료실 친환경 북큐레이션</p>
         <p>© 2026 우면도서관. All rights reserved.</p>
     </footer>
 
