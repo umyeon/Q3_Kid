@@ -14,7 +14,7 @@
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: 
                 /* 1. 맨 위쪽 (하늘 + 민트색 파스텔) */
-                radial-gradient(circle at 25% 6%, rgba(167, 243, 208, 0.85), transparent 45%), 
+                radial-gradient(circle at 30% 5%, rgba(167, 243, 208, 0.85), transparent 45%), 
                 radial-gradient(circle at 65% 7%, rgba(125, 211, 252, 0.98), transparent 50%), 
                 
                 /* 2. 연두 + 초록색 (1섹션 반짝이는 영역) */
@@ -30,7 +30,7 @@
                 radial-gradient(circle at 35% 85%, rgba(147, 197, 253, 0.95), transparent 50%), 
                 
                 /* 파스텔 색감들의 조화를 부드럽게 받쳐주는 베이스 */
-                linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+                linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
             background-size: 100% 100%;
             word-break: keep-all;
             position: relative;
@@ -109,6 +109,12 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-6 pb-24 space-y-16">
+
+        <div class="pt-4 flex justify-center">
+            <div class="bg-white/30 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/40 text-blue-950/80 text-sm md:text-base font-semibold tracking-wide shadow-sm flex items-center gap-2 select-none">
+                🐠 <span>책 표지를 클릭하면 해당 도서를 바로 찾아볼 수 있습니다.</span>
+            </div>
+        </div>
 
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
