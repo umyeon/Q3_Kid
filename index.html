@@ -11,13 +11,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
-        /* 2. 요청하신 영역별 세부 위치에 맞춰 그라데이션 색상 순서 및 범위 재조정 */
+        /* 4. 상단 타이틀/소개 영역의 민트색을 낮추고 하늘색 농도와 범위를 대폭 강화 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: 
-                /* 타이틀 & 소개 영역: 민트색 + 하늘색 믹스 */
-                radial-gradient(circle at 30% 7%, rgba(167, 243, 208, 0.9), transparent 50%), 
-                radial-gradient(circle at 70% 9%, rgba(125, 211, 252, 0.95), transparent 50%), 
+                /* 타이틀 & 소개 영역: 민트 농도 약화 / 하늘색 농도 및 범위 크게 확대 */
+                radial-gradient(circle at 25% 6%, rgba(167, 243, 208, 0.35), transparent 40%), 
+                radial-gradient(circle at 55% 8%, rgba(125, 211, 252, 0.98), transparent 65%), 
                 
                 /* 소개 영역 절반 이후: 초록색 강조 (약 26% 지점) */
                 radial-gradient(circle at 75% 26%, rgba(190, 242, 100, 0.9), transparent 50%), 
@@ -52,9 +52,13 @@
             font-family: 'Dongle', sans-serif;
         }
 
-        /* 타이틀의 시인성을 확보하기 위한 미세한 부드러운 그림자 */
-        .text-shadow-soft {
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.04);
+        /* 2. 메인 타이틀 흰색 번짐 효과 (환하게 빛나는 네온 글로우 스타일로 강화) */
+        .text-shadow-glow {
+            text-shadow: 
+                0 0 12px rgba(255, 255, 255, 0.8), 
+                0 0 25px rgba(255, 255, 255, 0.6), 
+                0 0 40px rgba(255, 255, 255, 0.4),
+                0 2px 4px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
@@ -67,15 +71,15 @@
             우면도서관 ｜ 어린이자료실
         </p>
         
-        <!-- 1. 메인 타이틀: 지그재그 배열 및 '바' 글자 뒤로 아이폰 소라 이모티콘(🐚) 레이어링 적용 -->
-        <div class="inline-block text-left font-dongle text-[4.8rem] xs:text-[5.5rem] sm:text-7xl md:text-8xl lg:text-[8.5rem] text-white text-shadow-soft mb-10 tracking-wide select-none">
-            <div class="leading-[0.8] relative inline-block w-full whitespace-nowrap">
-                <!-- 소라 이모티콘을 '바' 글자 뒤에 겹치도록 배치 (z-0 및 투명도 조절로 글자가 묻히지 않음) -->
-                <span class="absolute -top-[0.12em] -left-[0.15em] text-[1.15em] opacity-65 z-0">🐚</span>
+        <!-- 1, 2. 메인 타이틀: 레이아웃 구조 균일화를 통한 행간 일치 및 소라 배치 레이어 조정 -->
+        <div class="inline-block text-left font-dongle text-[5.2rem] xs:text-[6rem] sm:text-8xl md:text-9xl lg:text-[9.5rem] text-white text-shadow-glow mb-10 tracking-wide select-none leading-[0.8]">
+            <div class="relative whitespace-nowrap">
+                <!-- 소라 이모티콘을 '바' 글자 뒤(z-0)에 배치하고 본문 글자는 z-10으로 올려 묻힘 방지 -->
+                <span class="absolute -top-[0.1em] -left-[0.18em] text-[1.15em] opacity-65 z-0">🐚</span>
                 <span class="relative z-10">바다가</span>
             </div>
-            <div class="leading-[0.8] pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
-            <div class="leading-[0.8] pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
+            <div class="pl-[1.2em] whitespace-nowrap relative z-10">들려주는</div>
+            <div class="pl-[2.4em] whitespace-nowrap relative z-10">이야기</div>
         </div>
         
         <!-- 소개글 영역 -->
@@ -90,7 +94,7 @@
                 지구의 변화까지.
             </p>
             
-            <p class="mb-6">바자는 많은 것을 이야기합니다.</p>
+            <p class="mb-6">바다는 많은 것을 이야기합니다.</p>
             
             <p class="leading-normal mb-6">
                 아름다운 바다와 그 안의 생명들,<br>
@@ -110,7 +114,7 @@
         <!-- 섹션 1: 반짝이는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
-                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-soft flex flex-wrap items-baseline gap-x-2">
+                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
                     <span class="text-emerald-500 shrink-0">✨ 1. 반짝이는</span> 
                     <span class="text-3xl md:text-4xl text-white font-light">- 우리가 사랑한 바다의 이야기</span>
                 </h2>
@@ -171,7 +175,7 @@
         <!-- 섹션 2: 아파하는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
-                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-soft flex flex-wrap items-baseline gap-x-2">
+                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
                     <span class="text-rose-500 shrink-0">😢 2. 아파하는</span> 
                     <span class="text-3xl md:text-4xl text-white font-light">- 숨결을 잃어가는 바다의 이야기</span>
                 </h2>
@@ -232,8 +236,9 @@
         <!-- 섹션 3: 함께하는 -->
         <section>
             <div class="mb-8 border-b-[3px] border-white/70 pb-2 inline-block max-w-full">
-                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-soft flex flex-wrap items-baseline gap-x-2">
-                    <span class="text-emerald-500 shrink-0">🤝 3. 함께하는</span> 
+                <h2 class="font-dongle text-4xl md:text-5xl text-shadow-glow flex flex-wrap items-baseline gap-x-2">
+                    <!-- 3. 요청하신 대로 폰트 색상을 파랑색(text-blue-500)으로 전면 교체 -->
+                    <span class="text-blue-500 shrink-0">🤝 3. 함께하는</span> 
                     <span class="text-3xl md:text-4xl text-white font-light">- 푸른 바다를 되살리는 우리의 이야기</span>
                 </h2>
             </div>
