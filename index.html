@@ -288,8 +288,35 @@
 
     <footer class="bg-slate-900/40 backdrop-blur-md text-slate-700 py-8 px-6 text-center text-xs border-t border-white/20">
         <p class="font-semibold mb-1">우면도서관 어린이자료실 북큐레이션</p>
-        <p>© 2026 우면도서관. All rights reserved.</p>
+        <p class="mb-4">© 2026 우면도서관. All rights reserved.</p>
+        
+        <!-- 방문자 카운터 표시부 (아주 작고 은은한 글씨) -->
+        <p class="text-[10px] text-slate-500/70 tracking-wider">
+            TOTAL VISITS: <span id="visitCount" class="font-bold">0</span>
+        </p>
     </footer>
+
+    <!-- 방문자 카운터 로직 스크립트 -->
+    <script>
+        // 로컬스토리지에서 방문 횟수 가져오기
+        let count = localStorage.getItem('website_visits');
+
+        // 방문 횟수가 없으면 0으로 초기화, 있으면 숫자로 변환
+        if (count === null) {
+            count = 0;
+        } else {
+            count = parseInt(count);
+        }
+
+        // 방문할 때마다 카운트 1 증가
+        count++;
+
+        // 로컬스토리지에 카운트 저장
+        localStorage.setItem('website_visits', count);
+
+        // HTML에 결과 표시
+        document.getElementById('visitCount').innerText = count.toLocaleString();
+    </script>
 
 </body>
 </html>
