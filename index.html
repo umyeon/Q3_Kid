@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>바다가 들려주는 이야기 - 우면도서관 북큐레이션</title>
+    <!-- 귀여운 픽셀 도트 느낌의 구글 DotGothic16 웹폰트 로드 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
@@ -60,6 +62,41 @@
                 0 0 40px rgba(255, 255, 255, 0.4),
                 0 2px 4px rgba(0, 0, 0, 0.04);
         }
+
+        /* 다른 템플릿과 정밀 통일시킨 톤다운 뱃지형 투데이/토탈 방문자 카운터 레이아웃 */
+        .visit-counter-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 56px;
+        }
+        .visit-counter-box {
+            font-family: 'DotGothic16', sans-serif; /* 납작하고 귀여운 기계식 픽셀 도트 감성 구현 */
+            font-size: 14px; /* 시각적 가독성 균형 크기 정돈 */
+            color: rgba(36, 36, 36, 0.65); /* 은은하게 낮춘 선명도 세팅 */
+            letter-spacing: 0.06em; /* 도트 텍스트 판독을 위한 적정 자간 */
+            padding: 6px 16px;
+            border: 1px solid rgba(28, 28, 26, 0.22); /* 톤다운 테두리선 */
+            border-radius: 4px;
+            background: rgba(28, 28, 26, 0.01);
+            display: inline-flex;
+            align-items: center;
+        }
+        .count-num {
+            font-weight: 700;
+            color: rgba(36, 36, 36, 0.85);
+        }
+        /* 예시 이미지 무드와 완벽하게 일치시킨 TOTAL 고유 레드 컬러 */
+        .count-num-total {
+            font-weight: 700;
+            color: #b54545; 
+        }
+        .count-space {
+            margin-right: 6px; /* 이미지 속 여백 비율 최적화 */
+        }
+        .count-divider {
+            margin: 0 12px;
+            color: rgba(28, 28, 26, 0.2);
+        }
     </style>
 </head>
 <body class="text-slate-800 min-h-screen antialiased">
@@ -99,7 +136,7 @@
             <p class="leading-normal mb-6">
                 아름다운 바다와 그 안의 생명들,<br>
                 바다가 보내는 경고들,<br>
-                푸른 지구를 지키기 위한<br>우리의 생각과 실천.
+                푸른 지구를 지키기 위한<br>우리는 생각과 실천.
             </p>
             
             <p class="leading-normal">
@@ -160,7 +197,7 @@
                 </div>
                 <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/40 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                     <div>
-                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417664662/417664644/979116825181" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
+                        <a href="https://umyeon.seocholib.or.kr/bookDetail/MO/417664662/417664644/9791186825181" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl bg-white/90 p-3 mb-4 group">
                             <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791186825181.jpg" alt="여름 안에서" class="h-52 mx-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         </a>
                         <div class="text-right">
@@ -284,9 +321,13 @@
             </div>
         </section>
 
-        <!-- 책 소개 카드 영역과 저작권 표시 영역 사이 (우측 정렬, text-xs 크기, 파란색 글씨) -->
-        <div class="text-right text-xs text-blue-600 font-medium pt-4">
-            TOTAL VISITS: <span id="visitCount">0</span>
+        <!-- 상단 배지 디자인과 통일시키며 DotGothic16 픽셀 도트 서체 및 TOTAL 레드 색상이 반영된 방문자 카운터 표시부 (가운데 정렬) -->
+        <div class="visit-counter-wrapper">
+            <div class="visit-counter-box">
+                TODAY<span class="count-space"></span><span id="v_today" class="count-num">0</span>
+                <span class="count-divider">｜</span>
+                TOTAL<span class="count-space"></span><span id="v_total" class="count-num-total">0</span>
+            </div>
         </div>
 
     </main>
@@ -296,26 +337,33 @@
         <p class="mb-4">© 2026 우면도서관. All rights reserved.</p>
     </footer>
 
-    <!-- 방문자 카운터 로직 스크립트 -->
+    <!-- TODAY 및 TOTAL 자동 산정 영구 기록 스크립트 -->
     <script>
-        // 로컬스토리지에서 방문 횟수 가져오기
-        let count = localStorage.getItem('website_visits');
+        const todayStr = new Date().toISOString().substring(0, 10);
+        
+        // 로컬스토리지 데이터 로드
+        let totalCount = parseInt(localStorage.getItem('sea_bookmark_total') || '0');
+        let lastVisitDate = localStorage.getItem('sea_bookmark_last_date') || '';
+        let todayCount = parseInt(localStorage.getItem('sea_bookmark_today') || '0');
 
-        // 방문 횟수가 없으면 0으로 초기화, 있으면 숫자로 변환
-        if (count === null) {
-            count = 0;
+        // 방문 카운트 누적 조건 가동
+        totalCount++;
+        
+        if (lastVisitDate !== todayStr) {
+            // 날짜가 바뀌었으면 투데이 초기화 및 날짜 업데이트
+            todayCount = 1;
+            localStorage.setItem('sea_bookmark_last_date', todayStr);
         } else {
-            count = parseInt(count);
+            todayCount++;
         }
 
-        // 방문할 때마다 카운트 1 증가
-        count++;
+        // 최신 데이터 영구 갱신
+        localStorage.setItem('sea_bookmark_total', totalCount);
+        localStorage.setItem('sea_bookmark_today', todayCount);
 
-        // 로컬스토리지에 카운트 저장
-        localStorage.setItem('website_visits', count);
-
-        // HTML에 결과 표시
-        document.getElementById('visitCount').innerText = count.toLocaleString();
+        // 화면 출력 바인딩
+        document.getElementById('v_today').innerText = todayCount.toLocaleString();
+        document.getElementById('v_total').innerText = totalCount.toLocaleString();
     </script>
 
 </body>
